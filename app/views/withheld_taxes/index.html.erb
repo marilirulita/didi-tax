@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Withheld taxes</h1>
+
+<div id="withheld_taxes">
+  <% @withheld_taxes.each do |withheld_tax| %>
+    <%= render withheld_tax %>
+    <p>
+      <%= link_to "Show this withheld tax", withheld_tax %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New withheld tax", new_withheld_tax_path %>

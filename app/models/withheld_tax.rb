@@ -1,0 +1,2 @@
+class WithheldTax < ApplicationRecord
+end

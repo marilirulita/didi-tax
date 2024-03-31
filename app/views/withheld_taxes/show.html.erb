@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @withheld_tax %>
+
+<div>
+  <%= link_to "Edit this withheld tax", edit_withheld_tax_path(@withheld_tax) %> |
+  <%= link_to "Back to withheld taxes", withheld_taxes_path %>
+
+  <%= button_to "Destroy this withheld tax", @withheld_tax, method: :delete %>
+</div>
