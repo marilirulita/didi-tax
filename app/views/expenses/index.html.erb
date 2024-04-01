@@ -1,14 +1,78 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Expenses</h1>
-
-<div id="expenses">
-  <% @expenses.each do |expense| %>
-    <%= render expense %>
-    <p>
-      <%= link_to "Show this expense", expense %>
-    </p>
-  <% end %>
-</div>
+<div class="container mx-auto">
+    <h1>Expenses</h1>
 
 <%= link_to "New expense", new_expense_path %>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Section
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Expense Type
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Amount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Notes
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="hidden">Action</span>                   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @expenses.each do |expense| %>
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                    <%= expense.date %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= expense.section %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= expense.expense_type %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= expense.amount %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= expense.notes %>
+                </td>
+                <td class="flex justify-between items-center px-6 py-4">
+                    <%= link_to "Edit", edit_expense_path(expense), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %> 
+                    <%= button_to "Remove", expense, method: :delete, class: "font-medium text-red-600 dark:text-red-500 hover:underline ms-3" %>
+                </td>
+            </tr>
+            <% end %> 
+        </tbody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900 dark:text-white">
+                <th scope="row" class="px-6 py-3 text-base">Total</th>
+                <td class="px-6 py-3"></td>
+                <td class="px-6 py-3"></td>
+                <td class="px-6 py-3"><%= @total[0].total_amount %></td>
+                
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+
+    <%#  <div id="expenses">
+    <% @expenses.each do |expense| %>
+        <%# <%= render expense %>       
+        <%# <p>
+        <%= link_to "Show this expense", expense %>
+        <%# </p>
+    <% end %>
+    <%# </div> %>
