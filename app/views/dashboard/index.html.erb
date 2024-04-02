@@ -1,4 +1,12 @@
 <p style="color: green"><%= notice %></p>
+<% isr = 2.10 %>
+<% isr_causado = @income_total[0].total_amount * isr/100 %>
+<% isr_cargo = isr_causado - @withheld_totals[0].total_isr %>
+<% iva = 16 %>
+<% iva_causado = @income_total[0].total_amount * iva/100 %>
+<% iva_declarar = iva_causado -  @expense_total[0].total_amount - @withheld_totals[0].total_iva %>
+<% iva_anterior = 0 %>
+<% iva_cargo = iva_declarar - iva_anterior %>
 
 <div class="container mx-auto">
 <table class="shadow-lg bg-white border-collapse">
@@ -8,60 +16,64 @@
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ingresos obtenidos mediante intermediarios entrega de bienes(bancario)</td>
-    <td class="border px-8 py-4">Dante Sparks</td>
+    <td class="border px-8 py-4"><%= @withheld_totals[0].total_income%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ingresos obtenidos mediante el usuario entrega de bienes(efectivo)</td>
-    <td class="border px-8 py-4">Neal Garrison</td>
+    <td class="border px-8 py-4"><%= @income_total[0].total_amount - @withheld_totals[0].total_income%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">total de ingresos</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= @income_total[0].total_amount%></td>
   </tr>
 
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">tasa ISR %</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%=isr%>%</td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ISR causado</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= isr_causado%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">retenciones x plataforma tecnologica</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= @withheld_totals[0].total_isr%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ISR a CARGO</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= isr_cargo%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">tasa IVA %</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= iva %>%</td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA causado</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= iva_causado %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA gastos acreditable</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= @expense_total[0].total_amount %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">retencion x plataforma tecnologica</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= @withheld_totals[0].total_iva %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA del periodo a declarar</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= iva_declarar %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA periodos anteriores</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= iva_anterior %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA a cargo (a favor)</td>
-    <td class="border px-8 py-4">Maggie O'Neill</td>
+    <td class="border px-8 py-4"><%= iva_cargo %></td>
+  </tr>
+  <tr class="text-gray-700 uppercase bg-gray-50 font-semibold ">
+    <td class="border px-8 py-4">Total pago</td>
+    <td class="border px-8 py-4"><%= isr_cargo + iva_cargo %></td>
   </tr>
 </table>
 </div>
