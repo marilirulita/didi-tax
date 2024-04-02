@@ -26,7 +26,7 @@ class WithheldTaxesController < ApplicationController
 
     respond_to do |format|
       if @withheld_tax.save
-        format.html { redirect_to withheld_tax_url(@withheld_tax), notice: "Withheld tax was successfully created." }
+        format.html { redirect_to withheld_taxes_url, notice: "Withheld tax was successfully created." }
         format.json { render :show, status: :created, location: @withheld_tax }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class WithheldTaxesController < ApplicationController
   def update
     respond_to do |format|
       if @withheld_tax.update(withheld_tax_params)
-        format.html { redirect_to withheld_tax_url(@withheld_tax), notice: "Withheld tax was successfully updated." }
+        format.html { redirect_to withheld_taxes_url, notice: "Withheld tax was successfully updated." }
         format.json { render :show, status: :ok, location: @withheld_tax }
       else
         format.html { render :edit, status: :unprocessable_entity }

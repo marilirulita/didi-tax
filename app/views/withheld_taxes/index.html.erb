@@ -56,11 +56,13 @@
             <% end %> 
         </tbody>
         <tfoot>
-            <tr class="font-semibold text-gray-900 dark:text-white">
+            <tr class="font-semibold text-gray-900 dark:text-white bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <th scope="row" class="px-6 py-3 text-base">Total</th>
                 <td class="px-6 py-3"><%= @total[0].total_income %></td>
                 <td class="px-6 py-3"><%= @total[0].total_iva %></td>
-                <td class="px-6 py-3"><%= @total[0].total_isr %></td>                            
+                <td class="px-6 py-3"><%= @total[0].total_isr %></td>      
+                <td class="px-6 py-3"></td> 
+                <td class="px-6 py-3"></td>                       
             </tr>
         </tfoot>
     </table>
