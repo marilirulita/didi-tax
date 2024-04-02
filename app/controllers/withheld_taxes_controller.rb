@@ -4,6 +4,7 @@ class WithheldTaxesController < ApplicationController
   # GET /withheld_taxes or /withheld_taxes.json
   def index
     @withheld_taxes = WithheldTax.all
+    @total = WithheldTax.select("sum(income_withheld) as total_income, sum(iva_withheld) as total_iva, sum(isr_withheld) as total_isr")
   end
 
   # GET /withheld_taxes/1 or /withheld_taxes/1.json

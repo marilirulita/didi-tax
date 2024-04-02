@@ -1,14 +1,77 @@
 <p style="color: green"><%= notice %></p>
 
+<div class="container mx-auto">
 <h1>Withheld taxes</h1>
 
-<div id="withheld_taxes">
-  <% @withheld_taxes.each do |withheld_tax| %>
-    <%= render withheld_tax %>
-    <p>
-      <%= link_to "Show this withheld tax", withheld_tax %>
-    </p>
-  <% end %>
+<%= link_to "New withheld tax", new_withheld_tax_path %>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Date
+                </th>               
+                <th scope="col" class="px-6 py-3">
+                    Income Withheld
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    IVA Withheld
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    ISR Withheld
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Notes
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="hidden">Action</span>                   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @withheld_taxes.each do |withheld_tax| %>
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                    <%= withheld_tax.date %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= withheld_tax.income_withheld %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= withheld_tax.iva_withheld %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= withheld_tax.isr_withheld %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= withheld_tax.note %>
+                </td>
+                
+                <td class="flex justify-between items-center px-6 py-4">
+                    <%= link_to "Edit", edit_withheld_tax_path(withheld_tax), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %> 
+                    <%= button_to "Remove", withheld_tax, method: :delete, class: "font-medium text-red-600 dark:text-red-500 hover:underline ms-3" %>
+            </tr>
+            <% end %> 
+        </tbody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900 dark:text-white">
+                <th scope="row" class="px-6 py-3 text-base">Total</th>
+                <td class="px-6 py-3"><%= @total[0].total_income %></td>
+                <td class="px-6 py-3"><%= @total[0].total_iva %></td>
+                <td class="px-6 py-3"><%= @total[0].total_isr %></td>                            
+            </tr>
+        </tfoot>
+    </table>
+</div>
 </div>
 
-<%= link_to "New withheld tax", new_withheld_tax_path %>
+<%# <div id="withheld_taxes">
+  <% @withheld_taxes.each do |withheld_tax| %>
+    <%# <%= render withheld_tax %>
+    <%# <p>
+      <%= link_to "Show this withheld tax", withheld_tax %>
+    <%# </p>
+  <% end %>
+<%# </div> %>

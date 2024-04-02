@@ -1,14 +1,66 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Incomes</h1>
+<div class="container mx-auto">
 
-<div id="incomes">
-  <% @incomes.each do |income| %>
-    <%= render income %>
-    <p>
-      <%= link_to "Show this income", income %>
-    </p>
-  <% end %>
-</div>
+    <h1>Incomes</h1>
 
 <%= link_to "New income", new_income_path %>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Date
+                </th>               
+                <th scope="col" class="px-6 py-3">
+                    Amount
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Notes
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <span class="hidden">Action</span>                   
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @incomes.each do |income| %>
+
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4">
+                    <%= income.date %>
+                </th>
+                <td class="px-6 py-4">
+                    <%= income.amount %>
+                </td>
+                <td class="px-6 py-4">
+                    <%= income.note %>
+                </td>
+                
+                <td class="flex justify-between items-center px-6 py-4">
+                    <%= link_to "Edit", edit_income_path(income), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %> 
+                    <%= button_to "Remove", income, method: :delete, class: "font-medium text-red-600 dark:text-red-500 hover:underline ms-3" %>
+            </tr>
+            <% end %> 
+        </tbody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900 dark:text-white">
+                <th scope="row" class="px-6 py-3 text-base">Total</th>
+                <td class="px-6 py-3"><%= @total[0].total_amount %></td>
+                <td class="px-6 py-3"></td>
+                <td class="px-6 py-3"></td>                            
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+
+<%# <div id="incomes">
+  <% @incomes.each do |income| %>
+    <%# <%= render income %>
+    <%# <p>
+      <%= link_to "Show this income", income %>
+    <%# </p>
+  <% end %>
+<%# </div> %>

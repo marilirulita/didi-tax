@@ -4,6 +4,7 @@ class IncomesController < ApplicationController
   # GET /incomes or /incomes.json
   def index
     @incomes = Income.all
+    @total = Income.select("sum(amount) as total_amount")
   end
 
   # GET /incomes/1 or /incomes/1.json
