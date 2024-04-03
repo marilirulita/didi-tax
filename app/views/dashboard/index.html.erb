@@ -16,15 +16,15 @@
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ingresos obtenidos mediante intermediarios entrega de bienes(bancario)</td>
-    <td class="border px-8 py-4"><%= @withheld_totals[0].total_income%></td>
+    <td class="border px-8 py-4">$ <%= @withheld_totals[0].total_income%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ingresos obtenidos mediante el usuario entrega de bienes(efectivo)</td>
-    <td class="border px-8 py-4"><%= @income_total[0].total_amount - @withheld_totals[0].total_income%></td>
+    <td class="border px-8 py-4">$ <%= @income_total[0].total_amount - @withheld_totals[0].total_income%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">total de ingresos</td>
-    <td class="border px-8 py-4"><%= @income_total[0].total_amount%></td>
+    <td class="border px-8 py-4">$ <%= @income_total[0].total_amount%></td>
   </tr>
 
   <tr class="hover:bg-gray-50">
@@ -33,15 +33,15 @@
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ISR causado</td>
-    <td class="border px-8 py-4"><%= isr_causado%></td>
+    <td class="border px-8 py-4">$ <%= isr_causado%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">retenciones x plataforma tecnologica</td>
-    <td class="border px-8 py-4"><%= @withheld_totals[0].total_isr%></td>
+    <td class="border px-8 py-4">$ <%= @withheld_totals[0].total_isr%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">ISR a CARGO</td>
-    <td class="border px-8 py-4"><%= isr_cargo%></td>
+    <td class="border px-8 py-4">$ <%= isr_cargo%></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">tasa IVA %</td>
@@ -49,31 +49,31 @@
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA causado</td>
-    <td class="border px-8 py-4"><%= iva_causado %></td>
+    <td class="border px-8 py-4">$ <%= iva_causado %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA gastos acreditable</td>
-    <td class="border px-8 py-4"><%= @expense_total[0].total_amount %></td>
+    <td class="border px-8 py-4">$ <%= @expense_total[0].total_amount %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">retencion x plataforma tecnologica</td>
-    <td class="border px-8 py-4"><%= @withheld_totals[0].total_iva %></td>
+    <td class="border px-8 py-4">$ <%= @withheld_totals[0].total_iva %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA del periodo a declarar</td>
-    <td class="border px-8 py-4"><%= iva_declarar %></td>
+    <td class="border px-8 py-4">$ <%= iva_declarar %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA periodos anteriores</td>
-    <td class="border px-8 py-4"><%= iva_anterior %></td>
+    <td class="border px-8 py-4">$ <%= iva_anterior %></td>
   </tr>
   <tr class="hover:bg-gray-50">
     <td class="border px-8 py-4">IVA a cargo (a favor)</td>
-    <td class="border px-8 py-4"><%= iva_cargo %></td>
+    <td class="border px-8 py-4">$ <%= iva_cargo %></td>
   </tr>
   <tr class="text-gray-700 uppercase bg-gray-50 font-semibold ">
     <td class="border px-8 py-4">Total pago</td>
-    <td class="border px-8 py-4"><%= isr_cargo + iva_cargo %></td>
+    <td class="border px-8 py-4">$ <%= isr_cargo + iva_cargo %></td>
   </tr>
 </table>
 </div>
